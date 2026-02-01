@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ page_title }}</h1>
+
+    {% if reviews %}
+        <div class="card-list">
+            {% for review in reviews %}
+                <a href="{% url 'review:review_detail' review.pk %}" class="card">
+                    <div class="card-header">
+                        <span class="card-title">{{ review.author }}'s review of {{ review.destination.name }}</span>
+                        <span class="rating">{{ review.rating }}/5.0</span>
+                    </div>
+                    <p class="card-excerpt">{{ review.body|truncatewords:35 }}</p>
+                    <div class="card-meta">{{ review.created_at|date:"F d, Y" }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h1>No Reviews Available</h1>
+            <p>Be the first to write a review!</p>
+        </div>
+    {% endif %}
+{% endblock %}

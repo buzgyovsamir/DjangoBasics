@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article>
+        <div class="destination-header">
+            <h1>{{ destination.name }}</h1>
+            <span class="country">{{ destination.country }}</span>
+        </div>
+
+        <h2>Description</h2>
+        <p class="review-body">{{ destination.description|linebreaks }}</p>
+
+        <div class="meta">
+            <p>Added on {{ destination.created_at|date:"F d, Y" }}</p>
+        </div>
+    </article>
+
+    {% if reviews %}
+        <section>
+            <h2>Recent Reviews</h2>
+            <div class="card-list">
+                {% for review in reviews %}
+                    <a href="{% url 'review:review_detail' review.pk %}" class="card">
+                        <div class="card-header">
+                            <span class="card-title">{{ review.author }}</span>
+                            <span class="rating">{{ review.rating }}/5.0</span>
+                        </div>
+                        <p class="card-excerpt">{{ review.body|truncatewords:35 }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    <div class="actions">
+        <a href="{% url 'review:list' %}" class="btn">View All Reviews</a>
+        <a href="{% url 'destination:list' %}" class="btn btn-secondary">Back to Destinations</a>
+    </div>
+{% endblock %}

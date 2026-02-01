@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ page_title }}</h1>
+
+    {% if destinations %}
+        <div class="card-list">
+            {% for destination in destinations %}
+                <a href="{% url 'destination:detail' destination.slug %}" class="card">
+                    <span class="card-title">{{ destination.name }}</span>
+                    <span class="card-subtitle">{{ destination.country }}</span>
+                    {% if destination.description %}
+                        <p class="card-excerpt">{{ destination.description|truncatewords:25 }}</p>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h1>No Destinations Available</h1>
+            <p>Check back later for new destinations!</p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article>
+        <div class="destination-header">
+            <h1>{{ review.author }}'s Review</h1>
+        </div>
+
+        <p>
+            <strong>Destination:</strong>
+            <a href="{% url 'destination:detail' review.destination.slug %}" class="inline-link">
+                {{ review.destination.name }}
+            </a>
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            <span class="rating">{{ review.rating }}/5.0</span>
+        </p>
+
+        <h2>Review</h2>
+        <div class="review-body">{{ review.body|linebreaks }}</div>
+
+        <div class="meta">
+            <p>Posted on {{ review.created_at|date:"F d, Y" }} at {{ review.created_at|time:"g:i A" }}</p>
+        </div>
+    </article>
+
+    <div class="actions">
+        <a href="{% url 'review:list' %}" class="btn btn-secondary">Back to Reviews</a>
+        <a href="{% url 'destination:detail' review.destination.slug %}" class="btn">View Destination</a>
+    </div>
+{% endblock %}
