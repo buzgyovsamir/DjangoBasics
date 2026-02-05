@@ -1,10 +1,6 @@
-from pydoc import plain
-
-from django.db.models.fields import json
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from exDjangoIntroduction.asgi import application
 from notes.models import Note
 
 
