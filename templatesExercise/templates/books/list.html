@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-5 mb-2">{{ page_title }}</h1>
+        <p class="lead text-muted mb-4">Browse all books in the collection.</p>
+    </div>
+</div>
+
+{% if books %}
+<div class="row g-4">
+    {% for book in books %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+            <img src="{{ book.image_url }}" class="card-img-top object-fit-cover" alt="{{ book.title }}" style="height: 200px;">
+            <div class="card-body">
+                <h2 class="card-title h5">{{ book.title }}</h2>
+                <p class="text-muted small mb-2">{{ book.genre }}</p>
+                <p class="card-text mb-2">{{ book.price|floatformat:2 }}</p>
+                {% if book.avg_rating %}
+                <p class="text-muted small mb-3">Rating: {{ book.avg_rating|floatformat:2 }}</p>
+                {% endif %}
+                <a href="{% url 'books:details' book.slug %}" class="btn btn-primary btn-sm me-1">View details</a>
+                <a href="{% url 'books:reviews' book.slug %}" class="btn btn-outline-primary btn-sm">Reviews</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-light border" role="status">No books in the catalog yet.</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

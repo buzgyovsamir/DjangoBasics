@@ -1,0 +1,40 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-5 mb-2">{{ page_title }}</h1>
+        <p class="lead text-muted mb-4">Latest reviews from the community.</p>
+    </div>
+</div>
+
+{% if reviews %}
+<div class="row g-4">
+    {% for review in reviews %}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <h2 class="card-title h6">{{ review.author }}</h2>
+                <p class="text-muted small mb-2">Rating: {{ review.rating|floatformat:2 }}</p>
+                <p class="card-text mb-2">{{ review.body|default:"" }}</p>
+                <p class="small mb-0">
+                    <span class="text-muted">On</span>
+                    <a href="{% url 'books:details' review.book.slug %}">{{ review.book.title }}</a>
+                </p>
+                {% if review.is_spoiler %}
+                <span class="badge bg-warning text-dark mt-2">Spoiler</span>
+                {% endif %}
+                <a href="{% url 'reviews:details' review.pk %}" class="btn btn-primary btn-sm mt-2">Read full review</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-light border" role="status">No reviews yet.</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

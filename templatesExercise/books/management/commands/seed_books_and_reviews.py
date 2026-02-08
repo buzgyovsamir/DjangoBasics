@@ -12,11 +12,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Clear existing sample data that matches our ISBNs so the command is idempotent
         isbns = {
-            "9780000000001",
-            "9780000000002",
-            "9780000000003",
-            "9780000000004",
-            "9780000000005",
+            "978000000001",
+            "978000000002",
+            "978000000003",
+            "978000000004",
+            "978000000005",
         }
         Review.objects.filter(book__isbn__in=isbns).delete()
         Book.objects.filter(isbn__in=isbns).delete()
@@ -25,7 +25,7 @@ class Command(BaseCommand):
             {
                 "title": "The Silent Library",
                 "price": "14.99",
-                "isbn": "9780000000001",
+                "isbn": "978000000001",
                 "genre": "Mystery",
                 "publishing_date": "2021-03-15",
                 "description": (
@@ -40,7 +40,7 @@ class Command(BaseCommand):
             {
                 "title": "Stars Beyond Canvas",
                 "price": "18.50",
-                "isbn": "9780000000002",
+                "isbn": "978000000002",
                 "genre": "Science",
                 "publishing_date": "2020-11-02",
                 "description": (
@@ -55,7 +55,7 @@ class Command(BaseCommand):
             {
                 "title": "Clockwork Kingdom",
                 "price": "22.00",
-                "isbn": "9780000000003",
+                "isbn": "978000000003",
                 "genre": "Fantasy",
                 "publishing_date": "2019-07-21",
                 "description": (
@@ -70,7 +70,7 @@ class Command(BaseCommand):
             {
                 "title": "Footnotes to History",
                 "price": "16.75",
-                "isbn": "9780000000004",
+                "isbn": "978000000004",
                 "genre": "History",
                 "publishing_date": "2018-09-10",
                 "description": (
@@ -85,7 +85,7 @@ class Command(BaseCommand):
             {
                 "title": "Coffee Shop Algorithms",
                 "price": "19.95",
-                "isbn": "9780000000005",
+                "isbn": "978000000005",
                 "genre": "Non-Fiction",
                 "publishing_date": "2022-01-05",
                 "description": (
@@ -100,7 +100,7 @@ class Command(BaseCommand):
         ]
 
         reviews_data = {
-            "9780000000001": [
+            "978000000001": [
                 {
                     "author": "Alex Morgan",
                     "body": (
@@ -129,7 +129,7 @@ class Command(BaseCommand):
                     "is_spoiler": True,
                 },
             ],
-            "9780000000002": [
+            "978000000002": [
                 {
                     "author": "Nora Klein",
                     "body": (
@@ -158,7 +158,7 @@ class Command(BaseCommand):
                     "is_spoiler": False,
                 },
             ],
-            "9780000000003": [
+            "978000000003": [
                 {
                     "author": "Elias Park",
                     "body": (
@@ -187,7 +187,7 @@ class Command(BaseCommand):
                     "is_spoiler": True,
                 },
             ],
-            "9780000000004": [
+            "978000000004": [
                 {
                     "author": "Hana Kim",
                     "body": (
@@ -216,7 +216,7 @@ class Command(BaseCommand):
                     "is_spoiler": False,
                 },
             ],
-            "9780000000005": [
+            "978000000005": [
                 {
                     "author": "Chris Nguyen",
                     "body": (

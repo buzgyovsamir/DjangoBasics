@@ -1,0 +1,63 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-5 mb-2">{{ page_title }}</h1>
+        <p class="lead text-muted mb-4">Welcome to Book Hub. Browse our collection and read reviews.</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-journal-bookmark display-4 text-primary mb-2"></i>
+                <h2 class="h4 card-title mb-1">Total books</h2>
+                <p class="card-text mb-0 fs-3 fw-semibold">{{ total_books|default:0 }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if latest_book %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="h4 mb-3">Latest addition</h2>
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="row g-0">
+                <div class="col-12 col-md-4">
+                    <img src="{{ latest_book.image_url }}" class="img-fluid w-100 h-100 object-fit-cover" alt="{{ latest_book.title }}">
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title h5">{{ latest_book.title|upper }}</h3>
+                        <p class="text-muted small mb-2">
+                            <span>{{ latest_book.genre|capfirst }}</span>
+                            {% if latest_book.publishing_date %}
+                            <span> · {{ latest_book.publishing_date }}</span>
+                            {% endif %}
+                            {% if latest_book.pages %}
+                            <span> · {{ latest_book.pages }} pages</span>
+                            {% endif %}
+                        </p>
+                        <p class="card-text">{{ latest_book.description|lower|capfirst|default:"No description available" | truncatewords:3 }}</p>
+                        <p class="mb-3">
+                            <span class="fw-semibold">Price:</span> {{ latest_book.price }}
+                            <span class="text-muted small"> · {{ latest_book.publisher|capfirst }}</span>
+                        </p>
+                        <a href="{% url 'books:details' latest_book.slug %}" class="btn btn-primary">View details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-light border" role="status">No books in the catalog yet.</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

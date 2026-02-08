@@ -1,0 +1,31 @@
+{% extends 'common/base.html' %}
+{% load stars %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-5 mb-2">{{ page_title }}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title h5">{{ review.author }}</h2>
+                <p class="text-muted small mb-2">Rating: {{ review.rating|floatformat:2|stars|safe }}</p>
+                {% if review.is_spoiler %}
+                <span class="badge bg-warning text-dark mb-2">Spoiler</span>
+                {% endif %}
+                <p class="card-text">{{ review.body|default:"" }}</p>
+                <p class="small text-muted mb-0">Review for</p>
+                <a href="{% url 'books:details' review.book.slug %}" class="d-block mb-3">{{ review.book.title }}</a>
+                <a href="{% url 'books:home' %}" class="btn btn-outline-secondary">Back to home</a>
+                <a href="{% url 'reviews:recent' %}" class="btn btn-outline-secondary">Recent reviews</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
