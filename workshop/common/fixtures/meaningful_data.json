@@ -1,0 +1,206 @@
+[
+  {
+    "model": "pets.pet",
+    "pk": 1,
+    "fields": {
+      "name": "Mochi",
+      "pet_photo": "https://images.unsplash.com/photo-1543852786-1cf6624b9987",
+      "birth_date": "2021-05-12",
+      "slug": "mochi-1"
+    }
+  },
+  {
+    "model": "pets.pet",
+    "pk": 2,
+    "fields": {
+      "name": "Koda",
+      "pet_photo": "https://images.unsplash.com/photo-1517849845537-4d257902454a",
+      "birth_date": "2020-11-03",
+      "slug": "koda-2"
+    }
+  },
+  {
+    "model": "pets.pet",
+    "pk": 3,
+    "fields": {
+      "name": "Nori",
+      "pet_photo": "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2",
+      "birth_date": "2022-08-19",
+      "slug": "nori-3"
+    }
+  },
+  {
+    "model": "pets.pet",
+    "pk": 4,
+    "fields": {
+      "name": "Atlas",
+      "pet_photo": "https://images.unsplash.com/photo-1472491235688-bdc81a63246e",
+      "birth_date": "2019-02-27",
+      "slug": "atlas-4"
+    }
+  },
+  {
+    "model": "pets.pet",
+    "pk": 5,
+    "fields": {
+      "name": "Pepper",
+      "pet_photo": "https://images.unsplash.com/photo-1444212477490-ca407925329e",
+      "birth_date": "2023-01-14",
+      "slug": "pepper-5"
+    }
+  },
+  {
+    "model": "photos.photo",
+    "pk": 1,
+    "fields": {
+      "photo": "seed/mochi-window.jpg",
+      "description": "Mochi guarding the window and tracking pigeons all morning.",
+      "location": "Chicago",
+      "date_of_publication": "2026-02-13",
+      "tagged_pets": [1]
+    }
+  },
+  {
+    "model": "photos.photo",
+    "pk": 2,
+    "fields": {
+      "photo": "seed/trail-duo.jpg",
+      "description": "Koda and Atlas after a muddy trail run at sunrise.",
+      "location": "Denver",
+      "date_of_publication": "2026-02-13",
+      "tagged_pets": [2, 4]
+    }
+  },
+  {
+    "model": "photos.photo",
+    "pk": 3,
+    "fields": {
+      "photo": "seed/nori-sunbeam.jpg",
+      "description": "Nori claimed the warmest sunbeam in the living room.",
+      "location": "Austin",
+      "date_of_publication": "2026-02-13",
+      "tagged_pets": [3]
+    }
+  },
+  {
+    "model": "photos.photo",
+    "pk": 4,
+    "fields": {
+      "photo": "seed/pepper-first-park-day.jpg",
+      "description": "Pepper discovered leaves and forgot every command instantly.",
+      "location": "Seattle",
+      "date_of_publication": "2026-02-13",
+      "tagged_pets": [5]
+    }
+  },
+  {
+    "model": "photos.photo",
+    "pk": 5,
+    "fields": {
+      "photo": "seed/weekend-pack.jpg",
+      "description": "Weekend group photo with too much energy and zero focus.",
+      "location": "Portland",
+      "date_of_publication": "2026-02-13",
+      "tagged_pets": [1, 2, 3, 5]
+    }
+  },
+  {
+    "model": "common.comment",
+    "pk": 1,
+    "fields": {
+      "text": "This is the definition of focused chaos.",
+      "date_and_time_of_publication": "2026-02-13T09:15:00Z",
+      "to_photo": 5
+    }
+  },
+  {
+    "model": "common.comment",
+    "pk": 2,
+    "fields": {
+      "text": "Mochi takes neighborhood security very seriously.",
+      "date_and_time_of_publication": "2026-02-13T10:05:00Z",
+      "to_photo": 1
+    }
+  },
+  {
+    "model": "common.comment",
+    "pk": 3,
+    "fields": {
+      "text": "Trail day was worth every muddy paw print.",
+      "date_and_time_of_publication": "2026-02-13T11:40:00Z",
+      "to_photo": 2
+    }
+  },
+  {
+    "model": "common.comment",
+    "pk": 4,
+    "fields": {
+      "text": "Pepper is clearly in peak zoomie mode.",
+      "date_and_time_of_publication": "2026-02-13T12:20:00Z",
+      "to_photo": 4
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 1,
+    "fields": {
+      "to_photo": 1
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 2,
+    "fields": {
+      "to_photo": 1
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 3,
+    "fields": {
+      "to_photo": 2
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 4,
+    "fields": {
+      "to_photo": 2
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 5,
+    "fields": {
+      "to_photo": 2
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 6,
+    "fields": {
+      "to_photo": 3
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 7,
+    "fields": {
+      "to_photo": 5
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 8,
+    "fields": {
+      "to_photo": 5
+    }
+  },
+  {
+    "model": "common.like",
+    "pk": 9,
+    "fields": {
+      "to_photo": 5
+    }
+  }
+]
