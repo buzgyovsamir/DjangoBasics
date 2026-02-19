@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load stars %}
 
 {% block content %}
 <div class="row">
@@ -7,6 +8,10 @@
         <p class="lead text-muted mb-4">Browse all books in the collection.</p>
     </div>
 </div>
+
+    <form>
+    {{ search_form }}<button>Search</button>
+    </form>
 
 {% if books %}
 <div class="row g-4">
@@ -19,7 +24,7 @@
                 <p class="text-muted small mb-2">{{ book.genre }}</p>
                 <p class="card-text mb-2">{{ book.price|floatformat:2 }}</p>
                 {% if book.avg_rating %}
-                <p class="text-muted small mb-3">Rating: {{ book.avg_rating|floatformat:2 }}</p>
+                <p class="text-muted small mb-3">Rating: {{ book.avg_rating|floatformat:2|stars|safe }}</p>
                 {% endif %}
                 <a href="{% url 'books:details' book.slug %}" class="btn btn-primary btn-sm me-1">View details</a>
                 <a href="{% url 'books:reviews' book.slug %}" class="btn btn-outline-primary btn-sm">Reviews</a>

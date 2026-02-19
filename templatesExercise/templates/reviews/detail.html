@@ -23,6 +23,9 @@
                 <a href="{% url 'books:details' review.book.slug %}" class="d-block mb-3">{{ review.book.title }}</a>
                 <a href="{% url 'books:home' %}" class="btn btn-outline-secondary">Back to home</a>
                 <a href="{% url 'reviews:recent' %}" class="btn btn-outline-secondary">Recent reviews</a>
+                <a href="{% url 'reviews:edit' review.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'reviews:delete' review.pk %}" class="btn btn-danger">Delete</a>
+
 
             </div>
         </div>

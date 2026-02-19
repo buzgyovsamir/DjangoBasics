@@ -1,5 +1,4 @@
 from django import template
-from django.utils.timezone import now
 
 register = template.Library()
 
@@ -10,7 +9,7 @@ def stars(value):
     except (TypeError, ValueError):
         return ''
 
-    full_rating = max(int(rating),9)
+    full_rating = min(int(rating), 5)
 
     star_svg = """
         <svg class = "-mt-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 33 33" version="1.1">

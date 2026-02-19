@@ -46,7 +46,25 @@ class Book(TimeStampModel):
         max_length=100,
     )
 
+    def __str__(self):
+        return f'{self.title}'
+
     def save(self, *args, **kwargs) -> None:
         if not self.slug:
             self.slug = slugify(f'{self.title}-{self.publisher}')
         super().save(*args,**kwargs)
+
+class Tag(models.Model):
+    name = models.CharField(
+        max_length=50,
+    )
+
+    books = models.ManyToManyField(
+        Book,
+    )
+
+    def __repr__(self):
+        return f'{self.name}'
+
+    def __str__(self):
+        return f'{self.name}'

@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load stars %}
 
 {% block content %}
 <div class="row">
@@ -31,11 +32,18 @@
                             <span class="fw-semibold">Price:</span> {{ book.price }}
                             <span class="text-muted small"> · {{ book.publisher }}</span>
                         </p>
+                        <p class="fw-semibold"> Tags: {{ book.tag_set.all|join:", " }}</p>
                         {% if book.avg_rating %}
-                        <p class="text-muted small mb-3">Average rating: {{ book.avg_rating|floatformat:2 }}</p>
+                        <p class="text-muted small mb-3">Average rating: {{ book.avg_rating|floatformat:2|stars|safe }}</p>
                         {% endif %}
                         <a href="{% url 'books:reviews' book.slug %}" class="btn btn-primary me-2">Reviews</a>
                         <a href="{% url 'books:list' %}" class="btn btn-outline-secondary">Back to books</a>
+                        <a href="{% url 'reviews:create'%}" class="btn btn-primary me-2">Give a review</a>
+
+                        <div class="col-md-4">
+                            <a href="{% url 'books:edit' book.pk%}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'books:delete' book.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>
