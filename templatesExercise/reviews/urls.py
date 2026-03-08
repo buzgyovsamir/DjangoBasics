@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from reviews.views import recent_reviews, review_datils, review_edit, review_delete, review_create
+from reviews.views import recent_reviews, review_datils, review_edit, review_delete, review_create, review_bulk_update
 
 app_name = 'reviews'
 
@@ -13,6 +13,7 @@ pk_patterns = [
 reviews_patterns = [
     path('recent/',recent_reviews, name='recent' ),
     path('create/', review_create, name='create'),
+    path('<slug:book_slug>/', review_bulk_update, name= 'bulk_update'),
     path('<int:pk>/',include(pk_patterns))
 ]
 urlpatterns = [
